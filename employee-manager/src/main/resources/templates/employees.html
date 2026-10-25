@@ -37,7 +37,12 @@
         <button type="submit" class="btn-save">Save Employee</button>
     </form>
 
-    <h2>Employees (Total: <span th:text="${employees.size()}">0</span>)</h2>
+    <h2>Search Employees</h2>
+    <form th:action="@{/employees}" method="get" class="search-form">
+        <input type="text" name="keyword" th:value="${keyword}" placeholder="Enter employee name">
+        <button type="submit" class="btn-edit">Search</button>
+        <a class="btn-cancel" th:href="@{/employees}">Clear</a>
+    </form>
     <table>
         <thead>
         <tr>

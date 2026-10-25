@@ -98,5 +98,15 @@ public class EmployeeController {
         redirectAttributes.addFlashAttribute("successMessage", "Employee deleted successfully!");
         return "redirect:/employees";
     }
+
+    // READ: GET /employees -> show the form and the table (with optional search)
+    @GetMapping("/employees")
+    public String listEmployees(@RequestParam(required = false) String keyword, Model model) {
+        model.addAttribute("employee", new Employee());
+        model.addAttribute("employees", employeeService.searchEmployees(keyword));
+        model.addAttribute("keyword", keyword);
+        return "employees";
+    }
+
 }
 
